@@ -1,0 +1,69 @@
+{
+    "type": "object",
+    "properties": {
+        "subscription": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request for the ModifyPushConfig method.",
+            "properties": {
+                "pushConfig": {
+                    "description": "The push configuration for future deliveries.\n\nAn empty `pushConfig` indicates that the Pub/Sub system should\nstop pushing messages from the given subscription and allow\nmessages to be pulled and acknowledged - effectively pausing\nthe subscription if `Pull` or `StreamingPull` is not called.",
+                    "properties": {
+                        "attributes": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Endpoint configuration attributes.\n\nEvery endpoint has a set of API supported attributes that can be used to\ncontrol different aspects of the message delivery.\n\nThe currently supported attribute is `x-goog-version`, which you can\nuse to change the format of the pushed message. This attribute\nindicates the version of the data expected by the endpoint. This\ncontrols the shape of the pushed message (i.e., its fields and metadata).\nThe endpoint version is based on the version of the Pub/Sub API.\n\nIf not present during the `CreateSubscription` call, it will default to\nthe version of the API used to make such call. If not present during a\n`ModifyPushConfig` call, its value will not be changed. `GetSubscription`\ncalls will always return a valid version, even if the subscription was\ncreated without this attribute.\n\nThe possible values for this attribute are:\n\n* `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.\n* `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.",
+                            "type": "object"
+                        },
+                        "pushEndpoint": {
+                            "description": "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use \"https://example.com/push\".",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

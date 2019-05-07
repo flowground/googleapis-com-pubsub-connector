@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "subscription": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request for the `Pull` method.",
+            "properties": {
+                "maxMessages": {
+                    "description": "The maximum number of messages returned for this request. The Pub/Sub\nsystem may return fewer than the number specified.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "returnImmediately": {
+                    "description": "If this field set to true, the system will respond immediately even if\nit there are no messages available to return in the `Pull` response.\nOtherwise, the system may wait (for a bounded amount of time) until at\nleast one message is available, rather than returning no messages.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

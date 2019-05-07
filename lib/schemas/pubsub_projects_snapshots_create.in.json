@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request for the `CreateSnapshot` method.<br><br>\n<b>BETA:</b> This feature is part of a beta release. This API might be changed in\nbackward-incompatible ways and is not recommended for production use.\nIt is not subject to any SLA or deprecation policy.",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>.",
+                    "type": "object"
+                },
+                "subscription": {
+                    "description": "The subscription whose backlog the snapshot retains.\nSpecifically, the created snapshot is guaranteed to retain:\n (a) The existing backlog on the subscription. More precisely, this is\n     defined as the messages in the subscription's backlog that are\n     unacknowledged upon the successful completion of the\n     `CreateSnapshot` request; as well as:\n (b) Any messages published to the subscription's topic following the\n     successful completion of the CreateSnapshot request.\nFormat is `projects/{project}/subscriptions/{sub}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request for the UpdateSnapshot method.<br><br>\n<b>BETA:</b> This feature is part of a beta release. This API might be\nchanged in backward-incompatible ways and is not recommended for production\nuse. It is not subject to any SLA or deprecation policy.",
+            "properties": {
+                "snapshot": {
+                    "description": "The updated snapshot object.",
+                    "properties": {
+                        "expireTime": {
+                            "description": "The snapshot is guaranteed to exist up until this time.\nA newly-created snapshot expires no later than 7 days from the time of its\ncreation. Its exact lifetime is determined at creation by the existing\nbacklog in the source subscription. Specifically, the lifetime of the\nsnapshot is `7 days - (age of oldest unacked message in the subscription)`.\nFor example, consider a subscription whose oldest unacked message is 3 days\nold. If a snapshot is created from this subscription, the snapshot -- which\nwill always capture this 3-day-old backlog as long as the snapshot\nexists -- will expire in 4 days. The service will refuse to create a\nsnapshot that would expire in less than 1 hour after creation.",
+                            "format": "google-datetime",
+                            "type": "string"
+                        },
+                        "labels": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>.",
+                            "type": "object"
+                        },
+                        "name": {
+                            "description": "The name of the snapshot.",
+                            "type": "string"
+                        },
+                        "topic": {
+                            "description": "The name of the topic from which this snapshot is retaining messages.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "updateMask": {
+                    "description": "Indicates which fields in the provided snapshot to update.\nMust be specified and non-empty.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
